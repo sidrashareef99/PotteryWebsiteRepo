@@ -18,9 +18,9 @@ public class CartController {
     @Autowired
     private UserService userService;
 
-    @GetMapping
-    public String getCart(Model model) {
-        User user  = getAuthenticatedUser();
-    }
+//    @GetMapping
+//    public String getCart(Model model) {
+//        User user  = getAuthenticatedUser();
+//    }
 
 }
