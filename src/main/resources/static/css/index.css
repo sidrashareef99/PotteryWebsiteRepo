@@ -1,0 +1,325 @@
+:root{
+    --main-color: #D3CBB5; 
+    --text-color: #664225;
+}
+
+.julius-sans-one-regular {
+    font-family: "Julius Sans One", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+  }
+
+#heading{
+    font-family: "Julius Sans One", sans-serif;
+    color:var(text-color);
+    margin-left: 50px;
+    font-size: 48px;
+    grid-area : nav;
+}
+
+body{
+    background-color: var(--main-color);
+}
+
+#nav{
+    font-family: "Julius Sans One", sans-serif;
+    display:flex;
+    justify-content: space-between;
+    color: var(--text-color);
+    font-size: 20px;
+    grid-area: nav;
+}
+#navLinks{
+    margin-top: 90px;
+    margin-right: 50px;
+}
+#navLinks a:hover{
+    color: white;
+    cursor: pointer;
+}
+
+ul a{
+    text-decoration: none;
+    color: var(--text-color);
+    padding-top: 50px;
+
+}
+li{
+    display: inline-block;
+    padding-right: 30px;
+}
+
+/* Index Styles */
+#img-containers{
+    margin-left: 50px;
+    margin-right:50px;
+    position: relative;
+    text-align: center;
+}
+
+.homePic:hover{
+    filter: brightness(80%);
+    cursor: pointer;
+    scale: 1.08;
+
+}
+.homePic{
+    height: 500px;
+    width: 414px;;
+    display:inline-block;
+    justify-content:space-around;
+    padding: 20px 20px 20px 20px;
+    border-radius: 30px;
+    filter: brightness(65%);
+    object-fit: cover;
+    grid-area: homePic;
+}
+.picLabel{
+    color: white;
+    font-family: "Julius Sans One", sans-serif;
+
+}
+#modernElegant, #funCreative{
+    font-family: "Julius Sans One", sans-serif;
+    color: var(--text-color);
+    margin-left: 50px;
+    margin-right: 50px;
+}
+#funCreativeFloat{
+    float:right;
+}
+#funCreativeDesc{
+    float:left;
+}
+#modernPieces, #customPieces{
+    border-radius: 10px;
+    margin-left: 50px;
+    margin-right: 50px;
+}
+
+
+/* Customize Styles */
+#customForm h2{
+    font-family: "Julius Sans One", sans-serif;
+    color: #D3CBB5;
+    padding-left: 5%;
+    padding-top: 5%;
+
+}
+#customPieces{
+    width: 600px;
+    height: 400px; 
+    justify-content: right;
+}
+#formContainer{
+    margin-left:50px;
+    margin-right: 50px;
+    width: auto;
+    height: 1000px;
+    background: var(--text-color);
+    opacity: 90%;
+    border-radius: 10px;   
+}
+#imageOptions{
+    margin-left:5%;
+}
+#customSubmit{
+    font-family: "Julius Sans One", sans-serif;
+    font-size: medium;
+    background-color: var(--main-color);
+    margin-left: 50%;
+    color:var(--text-color);
+    border: none;
+    border-radius: 5px;
+    padding:10px;
+}
+#customSubmit:hover{
+    color: var(--main-color);
+    background-color: var(--text-color);
+    outline: 1px, solid, var(--main-color);
+}
+  
+.image-option {
+    display: inline-block;
+    margin: 10px;
+    cursor: pointer;
+}
+.image-option img {
+    width: 100px;
+    height: 100px;
+    border: 3px solid transparent;
+    border-radius: 5px;
+}
+.image-option.selected img {
+    border-color: var(--main-color);
+}
+
+/* Ready-To-Use Styles */
+.rtuPic{
+    height: 500px;
+    width: 414px;;
+    display:inline-block;
+    justify-content:space-around;
+    padding: 20px 20px 20px 20px;
+    border-radius: 30px;
+    filter: brightness(65%);
+    object-fit: cover;
+    grid-area: homePic;
+}
+
+#rtuContainer{
+    margin-left: 50px;
+    margin-right:50px;
+    position: relative;
+    text-align: center;
+}
+
+
+/* Contact Styles */
+#contactContainer {
+    text-align: center;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+#contactContainer h2 {
+    font-family: "Julius Sans One", sans-serif;
+    color: var(--text-color);
+    font-size: xx-large;
+    margin-bottom: 1rem;
+}
+
+#storeHours {
+    font-size: 1.2rem;
+    margin: 2rem auto;
+    border-collapse: collapse;
+    width: 100%;
+    max-width: 600px;
+}
+
+#storeHours th{
+    color: #664225;
+    font-size: 25px;
+    font-family: "Julius Sans One", sans-serif;
+    padding: 10px;
+    border-bottom: 2px solid var(--text-color);
+}
+#storeHours td {
+    color: #664225;
+    font-size: large;
+    font-family: "Julius Sans One", sans-serif;
+    padding: 10px;
+    border-bottom: 2px solid var(--text-color);
+}
+
+#leaveAMessage{
+    color: var(--text-color);
+    font-family: "Julius Sans One", sans-serif;
+
+}
+
+
+#contactBox {
+    margin: 2rem auto;
+    width: 100%;
+    max-width: 800px;
+    background: var(--text-color);
+    opacity: 0.9;
+    border-radius: 10px;
+    padding: 2rem;
+    box-sizing: border-box;
+}
+
+#contactForm {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#contactForm label {
+    align-self: flex-start;
+    margin-bottom: 0.5rem;
+    color: var(--main-color);
+}
+
+#contactMessage, textarea{
+
+    width:80%;
+    padding-bottom: 250px;
+    border: none;
+    border-radius: 5px;
+}
+
+#contactName,
+#contactEmail,
+#emailSubject, textarea{
+    width: 50%;
+    padding: 10px;
+    margin-bottom: 1rem;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    font-family: inherit;
+}
+
+#contactForm textarea {
+    resize: vertical;
+}
+#contactForm ::placeholder{
+    color:var(--text-color);
+    font-family: "Julius Sans One", sans-serif;
+}
+
+
+#contactForm button {
+    font-family: "Julius Sans One", sans-serif;
+    background-color: var(--main-color);
+    color: var(--text-color);
+    border: none;
+    border-radius:15px;
+    padding: 10px 20px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#contactForm button:hover {
+    background-color: #ddd;
+}
+
+
+/* About Styles */
+#aboutContainer h2{
+    font-family: "Julius Sans One", sans-serif;
+    margin-left:50px;
+    color: var(--text-color);
+    font-size: xx-large;
+    padding-left:25%;
+    padding-right: 25%;;
+    text-align: center;
+}
+#visionStatement, #missionStatement{
+    font-family: "Julius Sans One", sans-serif;
+    margin-left:50px;
+    color: var(--text-color);
+    font-size: large;
+    padding-left:25%;
+    padding-right: 25%;;
+    text-align: center;
+}
+
+@media (max-width: 768px) {
+    #contactContainer h2 {
+        font-size: 2rem;
+    }
+
+    #storeHours {
+        font-size: 1rem;
+    }
+
+    #contactBox {
+        padding: 1rem;
+    }
+}
+

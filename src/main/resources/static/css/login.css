@@ -1,0 +1,126 @@
+:root {
+	--third-color: #FFE9E4;
+    --main-color: #D3CBB5; 
+    --text-color: #664225;
+}
+
+.julius-sans-one-regular {
+    font-family: "Julius Sans One", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+  }
+
+body{
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height:100vh;
+    font-family: "Julius Sans One", sans-serif;
+    background-image: url('../images/background.jpeg');
+    background-color:var(--main-color);
+    background-size: cover;
+    box-shadow: 5px 10px;
+}
+.glass-container{
+    width: 600px;
+    height: 400px;
+    position : relative;
+    background: var(--text-color);
+    opacity: 90%;
+   border-radius: 10px;
+}
+.login-box {
+    max-width: 250px;
+    margin: 0 auto;
+    text-align: center;
+    opacity: 70%;
+    
+}
+
+
+h2 {
+    color:white;
+    font-family: "Julius Sans One", sans-serif;
+    margin-top: 30px;
+    margin-bottom:-10px;
+}
+input {
+    padding: 10px;
+    margin-top: 25px;
+    border: none;
+    border-radius: 10px;
+    background: var(--text-color);
+    border: 1px solid ;
+    color: var(--text-color);
+    font-size: 13px;
+}
+input::placeholder {
+    color: var(--text-color);
+    font-weight: bold;
+}
+
+
+button {
+    font-family: "Julius Sans One", sans-serif;
+    background:var(--main-color);
+    box-shadow: 0 0 5px 5px var(--text-color);
+    color: var(--fourth-color);
+    padding: 10px;
+    border: none;
+    border-radius: 10px ;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 15px;
+}
+
+
+button:hover {
+    background: var(--text-color);
+    box-shadow: 0 0 5px 5px var(--main-color);
+    color: white;
+    outline: 1px solid ;
+}
+#register a:hover{
+    color:black;
+
+}
+#login{
+    color:white; 
+    text-decoration: none;
+}
+#login a:hover{
+    color: black;
+}
+
+#selectProduce{
+    color: var(--third-color);    
+}
+#option{
+    text-align: center;
+}
+#selected{
+    text-align: center;
+}
+#passwordConfirm{
+    margin-bottom:20px;
+}
+#produce{
+    margin-top:15px;
+    border-radius: 10px;
+    padding:5px 50px 5px 50px;
+}
+p{
+ background: transparent;   
+ font-family: "Julius Sans One", sans-serif;
+ color: var(--third-color);
+ outline: 1px none ;
+ border: none;
+}
+
+input, textarea{
+    font-family: "Julius Sans One", sans-serif;
+    background-color: var(--third-color);
+
+}
+

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+  
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+       
+        <title>Login</title>
+
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Julius+Sans+One&display=swap" rel="stylesheet">
+
+
+        <!-- Link to your CSS file -->
+        <link rel="stylesheet" href="../css/login.css">
+        <style>
+            .glass-container{
+                width: 600px;
+                height: 675px;
+                position : relative;
+                background: #664225;
+                opacity: 90%;
+                border-radius: 10px;
+            }
+        </style>
+    
+    </head>
+
+
+   
+    <body>
+    <div class="glass-container">
+     <!-- A nested container with the class "login-box" for the login elements. -->
+    <div class ="login-box">
+        <h2>Register</h2>
+    <form action ="#" method="POST">
+        <input type = "text" rewuired placeholder="First Name">
+        <input type = "text" rewuired placeholder="Last Name">
+        <input type="text" id="username" name="username" required placeholder="Email" pattern="[a-z0-9._%+\-]+@[a-z0-9.\-]+\.[a-z]{2,}$">
+        <input type="password" id="password" name="password" required placeholder="Password" pattern = "(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}">
+        <input type="password" id="passwordConfirm" name="password" required placeholder="Confirm Password" pattern = "(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}">
+
+        <div class="options">
+        <input type="checkbox" id="remember" name="remember" >
+        <lable for="remember" style = "padding-top: 20px;  padding-right:8px; color: #FFE9E4; font-size:12px; font-weight: bold;">Remember me</lable>
+        <a href="#" id="forgetPWD" style="padding-top: 20px;  padding-left:8px; color:#FFE9E4; font-size:12px; font-weight: bold">Forgot password?</a>
+        </div>
+       
+          
+        <button id= "registerButton" type="submit">Register</button>
+        <p>Already have an account? <div class = "login"><a href="#" onclick="location.href='login.html';" style ="color:white; text-decoration: none;"  >Login</a> </div></p>
+    </form>
+
+   
+    </div>
+    </div>
+    </body>
+</html>`
