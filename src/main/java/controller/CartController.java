@@ -1,12 +1,16 @@
 package controller;
 
+import model.Cart;
+import model.Customer;
 import model.User;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import service.CartService;
+import service.CustomerService;
 import service.UserService;
 
 @Controller
@@ -16,11 +20,60 @@ public class CartController {
     private CartService cartService;
 
     @Autowired
-    private UserService userService;
+    private CustomerService customerService;
 
-//    @GetMapping
-//    public String getCart(Model model) {
-//        User user  = getAuthenticatedUser();
-//    }
+    @GetMapping
+    public String viewCart(Model model) {
+        Customer customer = getAuthenticatedUser();
+        Cart cart = cartService.getCartByCustomerId(customer.getId());
+        model.addAttribute("cart", cart);
+        return "cart";
+    }
+
+    @PostMapping("/add")
+    public String addToCart(@RequestParam Long productId, @RequestParam int quantity) {
+        Customer customer = getAuthenticatedUser();
+        cartService.addItemToCart(customer.getId(), productId, quantity);
+        return "redirect:/cart";
+    }
+
+    @PostMapping("/remove/{productId}")
+    public String removeFromCart(@PathVariable Long productId) {
+        Customer customer = getAuthenticatedUser();
+        cartService.removeItemFromCart(customer.getId(), productId);
+        return "redirect:/cart";
+    }
+
+    @PostMapping("/update")
+    public String updateCartItemQuantity(@RequestParam Long productId, @RequestParam int quantity) {
+        Customer customer = getAuthenticatedUser();
+        cartService.updateItemQuantity(customer.getId(), productId, quantity);
+        return "redirect:/cart";
+    }
+
+    @PostMapping("/checkout")
+    public String checkout(Model model, Authentication authentication) {
+        // Get the authenticated user's username
+        String username = authentication.getName();
+
+        // Find the customer using their username
+        Customer customer = customerService.findByUsername(username).orElseThrow(() -> new RuntimeException("Customer not found"));
+
+        // Retrieve the customer's cart
+        Cart cart = cartService.getCartByCustomerId(customer.getId());
+
+        // Prepare the receipt model attributes
+        model.addAttribute("csutomer", customer);
+        model.addAttribute("cart", cart);
+        model.addAttribute("totalPrice", cart.getTotal());
+
+        return "checkout-receipt"; // A Thymeleaf template that displays the receipt
+    }
+
+
+    private Customer getAuthenticatedUser() {
+        String username = ((User) SecurityContextHolder.getContext().getAuthentication().getPrincipal()).getUsername();
+        return customerService.findByUsername(username).orElseThrow(() -> new RuntimeException("Customer not found"));
+    }
 
 }

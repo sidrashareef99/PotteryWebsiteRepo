@@ -11,7 +11,7 @@
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Julius+Sans+One&display=swap" rel="stylesheet">
 
-        <link rel="stylesheet" href="../css/index.css">
+        <link rel="stylesheet" th:href="@{/css/index.css}">
 
     </head>
 
@@ -25,11 +25,11 @@
                 <div id = "navLinks">
                 <ul>
                     <li><a  th:href="@{/index}">Home</a></li>
-                    <li><a href="../html/custom.html">Customize</a></li>
-                    <li><a href="../html/ready-to-use.html">Ready-To-Use</a></li>
-                    <li><a href="../html/styles.html">Styles</a></li>
-                    <li><a href="../html/contact.html">Contact</a></li>
-                    <li><a href="../html/about.html">About</a></li>
+                    <li><a  th:href="@{custom.html}">Customize</a></li>
+                    <li><a  th:href="@{ready-to-use.html}">Ready-To-Use</a></li>
+                    <li><a  th:href="@{styles.html}">Styles</a></li>
+                    <li><a  th:href="@{contact.html}">Contact</a></li>
+                    <li><a  th:href="@{about.html}">About</a></li>
                 </ul>
                 </div>
             </div>

@@ -2,7 +2,6 @@ package service;
 
 import model.Admin;
 import model.Customer;
-import model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -11,10 +10,10 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import repository.AdminRepository;
 import repository.CustomerRepository;
-import repository.UserRepository;
 
 import java.util.Collections;
 import java.util.Optional;
+
 @Service
 public class CustomUserDetailsService implements UserDetailsService {
 
