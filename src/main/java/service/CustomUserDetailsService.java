@@ -4,6 +4,7 @@ import model.Admin;
 import model.Customer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -26,11 +27,11 @@ public class CustomUserDetailsService implements UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         // Try to find the user as a Customer
-        Optional<Customer> shopper = customerRepository.findByUsername(username);
-        if (shopper.isPresent()) {
+        Optional<Customer> customer = customerRepository.findByUsername(username);
+        if (customer.isPresent()) {
             return new org.springframework.security.core.userdetails.User(
-                    shopper.get().getUsername(),
-                    shopper.get().getPassword(),
+                    customer.get().getUsername(),
+                    customer.get().getPassword(),
                     Collections.singleton(new SimpleGrantedAuthority("ROLE_CUSTOMER"))  // Correct role
             );
         }

@@ -7,5 +7,7 @@ import lombok.Data;
 @Data
 public class Admin extends User{
     public Admin() {
+        super();
+        setRole(Role.ADMIN);
     }
 }

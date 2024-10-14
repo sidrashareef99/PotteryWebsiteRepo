@@ -11,6 +11,7 @@ import lombok.Data;
 @Data
 @DiscriminatorValue("CUSTOMER")
 public class Customer extends User {
+
     @OneToOne(mappedBy = "customer", cascade = CascadeType.ALL)
     private Cart cart;
 

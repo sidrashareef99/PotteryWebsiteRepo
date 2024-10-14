@@ -1,15 +1,24 @@
 package controller;
 
+import jakarta.validation.Valid;
+import model.Customer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import service.CustomerService;
 import service.UserService;
 
 @Controller
 public class MainController {
         @Autowired
-        private UserService userService;
+        private CustomerService customerService;
         @Autowired
         private PasswordEncoder passwordEncoder;
 
@@ -25,8 +34,32 @@ public class MainController {
         }
 
         @GetMapping("/register")
-        public String getRegister(){
-            return "register";
+        public String getRegister(Model model) {
+                model.addAttribute("customer", new Customer());  // Initialize empty customer object for the form
+                return "register";
+        }
+
+
+
+        @PostMapping("/register")
+        public String registerUser(@Valid @ModelAttribute("customer") Customer customer, BindingResult result) {
+                if (result.hasErrors()) {
+                        return "register";  // Return back to the registration form if there are validation errors
+                }
+                customer.setPassword(passwordEncoder.encode(customer.getPassword()));
+                customerService.registerCustomer(customer);  // Use the method that creates the customer and their cart
+                return "redirect:/login";
+        }
+
+
+        @GetMapping("/productspage")
+        public String getProducts(@RequestParam(value = "style", required = false) String style, Model model) {
+                if (style != null) {
+                        model.addAttribute("products", customerService.getProductsByStyle(style));
+                } else {
+                        model.addAttribute("products", customerService.getAllProducts());
+                }
+                return "products";
         }
 
 }

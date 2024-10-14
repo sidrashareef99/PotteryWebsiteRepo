@@ -63,7 +63,7 @@ public class CartController {
         Cart cart = cartService.getCartByCustomerId(customer.getId());
 
         // Prepare the receipt model attributes
-        model.addAttribute("csutomer", customer);
+        model.addAttribute("customer", customer);
         model.addAttribute("cart", cart);
         model.addAttribute("totalPrice", cart.getTotal());
 
