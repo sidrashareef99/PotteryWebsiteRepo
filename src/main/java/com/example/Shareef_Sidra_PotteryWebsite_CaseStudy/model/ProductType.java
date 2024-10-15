@@ -11,7 +11,7 @@ import java.util.List;
 public class ProductType {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private int product_type_id;
     private String name;
 //
 //    @OneToMany(mappedBy = "product_type", cascade = CascadeType.ALL, fetch = FetchType.EAGER)

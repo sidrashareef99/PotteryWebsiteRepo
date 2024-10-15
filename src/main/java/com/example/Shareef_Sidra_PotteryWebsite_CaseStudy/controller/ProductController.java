@@ -43,8 +43,8 @@ public class ProductController {
 
     @PostMapping("/save")
     public String saveProduct(@ModelAttribute("product") Product product) {
-        if (product.getId() != null) {
-            productService.update(product.getId(), product);
+        if (product.getProduct_id() != null) {
+            productService.update(product.getProduct_id(), product);
         } else {
             productService.save(product);
         }

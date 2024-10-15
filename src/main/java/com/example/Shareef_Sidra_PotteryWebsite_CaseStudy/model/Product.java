@@ -11,15 +11,18 @@ import java.util.List;
 public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long product_id;
     private String name;
     private String sku;
     private String description;
     private String imgUrl;
     private double price;
 
+    @Column(name = "style")
+    private String style;
+
     @ManyToOne
-    @JoinColumn(name = "product_types_id")
+    @JoinColumn(name = "product_type_id")
     private ProductType productType;
 
     @OneToMany(mappedBy = "product", cascade = CascadeType.ALL, fetch = FetchType.EAGER)

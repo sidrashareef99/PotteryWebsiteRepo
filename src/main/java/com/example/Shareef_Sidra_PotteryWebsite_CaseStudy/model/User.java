@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.Data;
 
 @Entity
+@Inheritance(strategy = InheritanceType.JOINED)
 @Data
 public class User {
     @Id
@@ -11,13 +12,11 @@ public class User {
     private long id;
     private String firstName;
     private String lastName;
-    private String email;
     private String username;
     private String password;
 
+    @Enumerated(EnumType.STRING)
     private Role role;
-
-    public User() {}
 
 //    public User(String username, String password) {
 //        this.username = username;

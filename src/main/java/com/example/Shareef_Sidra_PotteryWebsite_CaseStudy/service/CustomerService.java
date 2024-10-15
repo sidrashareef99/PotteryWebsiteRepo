@@ -28,7 +28,7 @@ public class CustomerService {
 
         // Create and save a new Cart for the registered Customer
         Cart cart = new Cart();
-        cart.setUser(savedCustomer);
+        cart.setCustomer(savedCustomer);
         cartRepository.save(cart);
 
         return savedCustomer;

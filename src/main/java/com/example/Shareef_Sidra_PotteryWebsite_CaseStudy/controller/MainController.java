@@ -31,7 +31,7 @@ public class MainController {
             return "login";
         }
 
-        @GetMapping("/register")
+        @GetMapping("/showRegister")
         public String getRegister(Model model) {
                 model.addAttribute("customer", new Customer());  // Initialize empty customer object for the form
                 return "register";
@@ -41,9 +41,12 @@ public class MainController {
 
         @PostMapping("/register")
         public String registerUser(@Valid @ModelAttribute("customer") Customer customer, BindingResult result) {
+                System.out.println("In registerUser");
+                System.out.print("email: " + customer.getUsername());
                 if (result.hasErrors()) {
                         return "register";  // Return back to the registration form if there are validation errors
                 }
+
                 customer.setPassword(passwordEncoder.encode(customer.getPassword()));
                 customerService.registerCustomer(customer);  // Use the method that creates the customer and their cart
                 return "redirect:/login";

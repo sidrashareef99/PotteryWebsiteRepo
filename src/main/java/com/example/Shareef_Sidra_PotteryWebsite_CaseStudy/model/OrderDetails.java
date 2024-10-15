@@ -8,20 +8,20 @@ import lombok.Data;
 public class OrderDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private int order_details_id;
     private String createdAt;
     private String updatedAt;
     private double total;
 
     @ManyToOne
-    @JoinColumn(name = "orders_id")
+    @JoinColumn(name = "order_id")
     private Order order;
 
     @OneToOne
-    @JoinColumn(name = "users_id")
+    @JoinColumn(name = "user_id")
     private User user;
 
     @ManyToOne
-    @JoinColumn(name = "products_id")
+    @JoinColumn(name = "product_id")
     private Product product;
 }

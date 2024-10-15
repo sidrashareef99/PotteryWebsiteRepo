@@ -119,7 +119,6 @@ p{
 }
 
 input, textarea{
-    font-family: "Julius Sans One", sans-serif;
     background-color: var(--third-color);
 
 }

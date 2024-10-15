@@ -33,7 +33,7 @@ public class OrderService {
     public void update(Long id, Order updatedOrder) {
         orderRepository.findById(id)
                 .map(order -> {
-                    order.setUser(updatedOrder.getUser());
+                    order.setCustomer(updatedOrder.getCustomer());
                     return orderRepository.save(order);
                 })
                 .orElseThrow(() -> new RuntimeException("Product not found"));

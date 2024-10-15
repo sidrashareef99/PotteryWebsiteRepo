@@ -7,6 +7,7 @@ import com.example.Shareef_Sidra_PotteryWebsite_CaseStudy.model.Product;
 import com.example.Shareef_Sidra_PotteryWebsite_CaseStudy.repository.CartRepository;
 import com.example.Shareef_Sidra_PotteryWebsite_CaseStudy.repository.CustomerRepository;
 import com.example.Shareef_Sidra_PotteryWebsite_CaseStudy.repository.ProductRepository;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -35,7 +36,7 @@ public class CartService {
 
         return cartRepository.findByCustomer(customer).orElseGet(() -> {
             Cart newCart = new Cart();
-            newCart.setUser(customer);
+            newCart.setCustomer(customer);
             return cartRepository.save(newCart);
         });
     }
@@ -45,7 +46,7 @@ public class CartService {
                 .orElseThrow(() -> new RuntimeException("Customer not found"));
 
         Cart newCart = new Cart();
-        newCart.setUser(customer);
+        newCart.setCustomer(customer);
         newCart.setTotal(0.0);
         return cartRepository.save(newCart);
     }
@@ -57,7 +58,7 @@ public class CartService {
 
         // Check if the product is already in the cart
         Optional<CartItem> existingCartItem = cart.getItems().stream()
-                .filter(item -> item.getProduct().getId().equals(productId))
+                .filter(item -> item.getProduct().getProduct_id().equals(productId))
                 .findFirst();
 
         if (existingCartItem.isPresent()) {
@@ -83,7 +84,7 @@ public class CartService {
 
         // Find the item in the cart
         Optional<CartItem> itemToRemove = cart.getItems().stream()
-                .filter(item -> item.getProduct().getId().equals(productId))
+                .filter(item -> item.getProduct().getProduct_id().equals(productId))
                 .findFirst();
 
         if (itemToRemove.isPresent()) {
@@ -104,7 +105,7 @@ public class CartService {
         Cart cart = getCartByCustomerId(customerId);
 
         cart.getItems().stream()
-                .filter(item -> item.getProduct().getId().equals(productId))
+                .filter(item -> item.getProduct().getProduct_id().equals(productId))
                 .findFirst()
                 .ifPresent(item -> item.setQuantity(newQuantity));
 

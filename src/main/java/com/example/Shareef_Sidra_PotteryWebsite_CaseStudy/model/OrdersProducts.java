@@ -13,10 +13,10 @@ public class OrdersProducts {
     private float total;
 
     @ManyToOne
-    @JoinColumn(name = "products_id")
+    @JoinColumn(name = "product_id")
     private Product product;
 
     @ManyToOne
-    @JoinColumn(name = "orders_id")
+    @JoinColumn(name = "order_id")
     private Order order;
 }

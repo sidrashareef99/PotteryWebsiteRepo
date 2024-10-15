@@ -8,18 +8,18 @@ import lombok.Data;
 public class CartItem {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private int cart_item_id;
     private double price;
     private int quantity;
     private String createdAt;
     private String updatedAt;
 
     @ManyToOne
-    @JoinColumn(name = "products_id")
+    @JoinColumn(name = "product_id")
     private Product product;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "carts_id")
+    @JoinColumn(name = "cart_id")
     private Cart cart;
 
     public double getTotalPrice() {
