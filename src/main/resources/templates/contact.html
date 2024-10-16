@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -24,12 +24,12 @@
                 <h1 id = "heading">Bespoke <br> Pottery</h1>
                 <div id = "navLinks">
                 <ul>
-                    <li><a  th:href="@{/index}">Home</a></li>
-                    <li><a  th:href="@{custom.html}">Customize</a></li>
-                    <li><a  th:href="@{ready-to-use.html}">Ready-To-Use</a></li>
-                    <li><a  th:href="@{styles.html}">Styles</a></li>
-                    <li><a  th:href="@{contact.html}">Contact</a></li>
-                    <li><a  th:href="@{about.html}">About</a></li>
+                    <li><a  th:href="@{/}">Home</a></li>
+                    <li><a  th:href="@{/custom}">Customize</a></li>
+                    <li><a  th:href="@{/ready-to-use}">Ready-To-Use</a></li>
+                    <li><a  th:href="@{/styles}">Styles</a></li>
+                    <li><a  th:href="@{/contact}">Contact</a></li>
+                    <li><a  th:href="@{/about}">About</a></li>
                 </ul>
                 </div>
             </div>

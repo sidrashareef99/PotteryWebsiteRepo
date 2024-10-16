@@ -13,6 +13,10 @@ public class Product {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long product_id;
     private String name;
+    private String productType;
+    private String length;
+    private String width;
+    private String height;
     private String sku;
     private String description;
     private String imgUrl;
@@ -21,9 +25,9 @@ public class Product {
     @Column(name = "style")
     private String style;
 
-    @ManyToOne
-    @JoinColumn(name = "product_type_id")
-    private ProductType productType;
+//    @ManyToOne
+//    @JoinColumn(name = "product_type_id")
+//    private ProductType productType;
 
     @OneToMany(mappedBy = "product", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<OrderDetails> details = new ArrayList<>();

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ready-To-Use</title>
+
+    <link rel="stylesheet" th:href="@{/css/index.css}" />
+</head>
+<body>
+<nav>
+    <div id = "nav">
+        <h1 id = "heading">Bespoke <br> Pottery</h1>
+        <div id = "navLinks">
+            <ul>
+                <li><a  th:href="@{/}">Home</a></li>
+                <li><a  th:href="@{/custom}">Customize</a></li>
+                <li><a  th:href="@{/productspage}">Ready-To-Use</a></li>
+                <li><a  th:href="@{/styles}">Styles</a></li>
+                <li><a  th:href="@{/contact}">Contact</a></li>
+                <li><a  th:href="@{/about}">About</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+
+<!-- Filtering Form -->
+<form style="margin-left: 7rem;" th:action="@{/productspage}" method="get" class="filter-form">
+    <label for="style">Filter by Style:</label>
+    <select name="style" id="style" onchange="this.form.submit()">
+        <option value="">All</option>
+        <option value="Raku" th:selected="${param.style == 'Raku'}">Raku</option>
+        <option value="Handbuilt" th:selected="${param.style == 'Handbuilt'}">Handbuilt</option>
+        <option value="Molds" th:selected="${param.style == 'Molds'}">Molds</option>
+        <option value="Thrown" th:selected="${param.style == 'Thrown'}">Thrown</option>
+        <option value="Sculpture" th:selected="${param.style == 'Sculpture'}">Sculpture</option>
+    </select>
+</form>
+
+<div class="grid-container">
+    <div class="card" th:each="product : ${products}">
+        <div class="image-container">
+            <img th:src="@{/images/{img}(img=${product.imgUrl})}" th:alt="${product.name + ' ' + product.productType}" />
+        </div>
+        <div class="details">
+            <h3 th:text="${product.name + ' ' + product.length + ' x ' + product.width + ' x ' + product.height + ' - $' + product.price}">Pottery</h3>
+        </div>
+        <form th:action="@{/cart/add}" method="post">
+            <input type="hidden" name="productId" th:value="${product.product_id}" />
+            <input type="number" name="quantity" value="1" min="1" />
+            <button type="submit">Add to Cart</button>
+        </form>
+    </div>
+</div>
+
+
+
+<script type="module" src="../js/navbar.js"></script>
+<script type="module" src="../js/data.js"></script>
+</body>
+</html>
