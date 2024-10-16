@@ -2,83 +2,12 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Product List</title>
-    <link rel="stylesheet" th:href="@{/css/product-list.css}" />
-
-    <style>
-
-        .navbar {
-            position: fixed;
-            top: 0;
-            z-index: 100;
-            width: 100%;
-            padding: 1em 1em;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            height: 10vh;
-            font-family: "Tiny5", sans-serif;
-            font-weight: 400;
-            font-style: normal;
-        }
-
-        .navbar-logo {
-            font-size: 2em;
-            text-transform: uppercase;
-            color: white;
-            -webkit-animation: glowing-text 1s ease-in-out infinite alternate;
-            -moz-animation: glowing-text 1s ease-in-out infinite alternate;
-            animation: glowing-text 1s ease-in-out infinite alternate;
-        }
-
-        .navbar ul {
-            list-style: none;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            gap: 1em;
-        }
-
-        a {
-            font-weight: 500;
-            font-size: 16px;
-            color: white;
-            text-decoration: inherit;
-            transition: 0.4s ease, text-shadow 0.4s ease-in-out;
-        }
-
-        a:hover {
-            color: #ccc;
-            text-shadow: 0 0 5px #b0b659, 0 0 10px #b65959, 0 0 15px #b66759,
-            0 0 20px #db6034, 0 0 35px #ff2a00, 0 0 40px #db6c34;
-        }
-        @-webkit-keyframes glowing-text {
-            0% {
-                text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #2e00e6,
-                0 0 40px #6300e6, 0 0 50px #13e600, 0 0 60px #0073e6, 0 0 70px #e600ca;
-            }
-
-            100% {
-                text-shadow: 0 0 20px #fff, 0 0 30px #ec6409, 0 0 40px #ad0e0e,
-                0 0 50px #9fd712, 0 0 60px #ff4da6, 0 0 70px #ff4da6, 0 0 80px #ff4da6;
-            }
-        }
-
-        .navbar ul li a {
-            text-decoration: none;
-            color: white;
-            font-weight: bold;
-            transition: color 0.3s ease;
-        }
-        .navbar-hidden {
-            top: -250px;
-        }
-
-    </style>
+    <link rel="stylesheet" th:href="@{/css/index.css}" />
 
 </head>
 <body class="dark-theme">
 <div class="navbar">
-    <div class="navbar-logo">Auto Arcade</div>
+    <div class="navbar-logo">Bespoke Pottery</div>
     <ul>
         <li><a th:href="@{/register}">Sign Up</a></li>
         <li><a th:href="@{/login}">Login</a></li>
@@ -94,12 +23,12 @@
     <div class="product-grid">
         <div th:each="product : ${products}" class="product-card">
             <div class="product-details">
-                <h2 th:text="${product.name + ' ' + product.productType}">Form</h2>
+                <h2 th:text="${product.productType}">Form</h2>
                 <p><strong>Size:</strong> <span th:text="${product.length + ' ' + product.width}">Size</span></p>
             </div>
             <div class="product-actions">
-                <a th:href="@{/products/edit/{id}(id=${product.id})}" class="edit-button">Edit</a>
-                <a th:href="@{/products/delete/{id}(id=${product.id})}" class="delete-button">Delete</a>
+                <a th:href="@{/products/edit/{id}(id=${product.product_id})}" class="edit-button">Edit</a>
+                <a th:href="@{/products/delete/{id}(id=${product.product_id})}" class="delete-button">Delete</a>
             </div>
         </div>
     </div>

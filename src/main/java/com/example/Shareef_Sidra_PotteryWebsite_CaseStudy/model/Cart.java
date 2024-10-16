@@ -22,10 +22,10 @@ public class Cart {
     @JoinColumn(name = "customer_id")
     private Customer customer;
 
-    private double total;
+    private double totalPrice;
 
     public void calculateTotalPrice() {
-        total = items.stream()
+        totalPrice = items.stream()
                 .mapToDouble(CartItem::getTotalPrice)
                 .sum();
     }
