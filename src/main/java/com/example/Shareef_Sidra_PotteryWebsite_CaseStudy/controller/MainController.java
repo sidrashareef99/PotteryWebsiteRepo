@@ -57,6 +57,10 @@ public class MainController {
         public String getContact(){
                 return "contact";
         }
+        @GetMapping("/cart")
+        public String getCart(){
+                return "cart";
+        }
 
 
 //        @PostMapping("/register")

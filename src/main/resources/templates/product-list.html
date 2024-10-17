@@ -2,20 +2,33 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Product List</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Julius+Sans+One&display=swap" rel="stylesheet">
+
     <link rel="stylesheet" th:href="@{/css/index.css}" />
 
+
 </head>
-<body class="dark-theme">
-<div class="navbar">
-    <div class="navbar-logo">Bespoke Pottery</div>
-    <ul>
-        <li><a th:href="@{/register}">Sign Up</a></li>
-        <li><a th:href="@{/login}">Login</a></li>
-        <li><a th:href="@{/productspage}">Products</a></li>
-        <li><a th:href="@{/}">Home</a></li>
-        <li><a th:href="@{/products}">Admin</a></li>
-    </ul>
-</div>
+<body> <nav>
+    <div id = "nav">
+        <h1 id = "heading">Bespoke <br> Pottery</h1>
+        <div id = "navLinks">
+            <ul>
+                <li><a  th:href="@{/}">Home</a></li>
+                <li><a  th:href="@{/custom}">Customize</a></li>
+                <li><a  th:href="@{/productspage}">Ready-To-Use</a></li>
+                <li><a  th:href="@{/styles}">Styles</a></li>
+                <li><a  th:href="@{/contact}">Contact</a></li>
+                <li><a  th:href="@{/about}">About</a></li>
+                <li><a  th:href="@{/products}">Admin</a></li>
+                <li><a  th:href="@{/cart}">Cart</a></li>
+
+            </ul>
+        </div>
+    </div>
+</nav>
 
 
 <div class="container" style="margin-top: 5rem;">
@@ -23,8 +36,10 @@
     <div class="product-grid">
         <div th:each="product : ${products}" class="product-card">
             <div class="product-details">
-                <h2 th:text="${product.productType}">Form</h2>
+                <h2 th:text="${product.name}">Form</h2>
                 <p><strong>Size:</strong> <span th:text="${product.length + ' ' + product.width}">Size</span></p>
+                <p><strong>Price:</strong> <span th:text="'$' + ${product.price}">Price</span></p>
+                <img th:src="${product.imgUrl}" th:alt="productImage" >
             </div>
             <div class="product-actions">
                 <a th:href="@{/products/edit/{id}(id=${product.product_id})}" class="edit-button">Edit</a>

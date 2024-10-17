@@ -47,7 +47,7 @@ public class CartService {
 
         Cart newCart = new Cart();
         newCart.setCustomer(customer);
-        newCart.setTotal(0.0);
+        newCart.setTotalPrice(0.0);
         return cartRepository.save(newCart);
     }
 

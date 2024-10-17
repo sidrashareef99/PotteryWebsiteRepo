@@ -5,6 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Ready-To-Use</title>
 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Julius+Sans+One&display=swap" rel="stylesheet">
+
+
     <link rel="stylesheet" th:href="@{/css/index.css}" />
 </head>
 <body>
@@ -32,7 +37,7 @@
         <option value="">All</option>
         <option value="Raku" th:selected="${param.style == 'Raku'}">Raku</option>
         <option value="Handbuilt" th:selected="${param.style == 'Handbuilt'}">Handbuilt</option>
-        <option value="Molds" th:selected="${param.style == 'Molds'}">Molds</option>
+        <option value="Molds" th:selected="${param.style == 'Nerikomi'}">Nerikomi</option>
         <option value="Thrown" th:selected="${param.style == 'Thrown'}">Thrown</option>
         <option value="Sculpture" th:selected="${param.style == 'Sculpture'}">Sculpture</option>
     </select>

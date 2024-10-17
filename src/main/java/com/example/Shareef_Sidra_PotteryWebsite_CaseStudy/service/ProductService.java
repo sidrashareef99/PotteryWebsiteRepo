@@ -35,6 +35,7 @@ public class ProductService {
                     product.setLength(updatedProduct.getLength());
                     product.setWidth(updatedProduct.getWidth());
                     product.setHeight(updatedProduct.getHeight());
+                    product.setImgUrl(updatedProduct.getImgUrl());
                     product.setDescription(updatedProduct.getDescription());
                     product.setProductType(updatedProduct.getProductType());
                     product.setStyle(updatedProduct.getStyle());

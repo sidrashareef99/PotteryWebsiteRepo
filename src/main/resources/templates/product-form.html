@@ -1,40 +1,71 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Product List</title>
+    <title>Create or Edit Products</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Julius+Sans+One&display=swap" rel="stylesheet">
+
     <link rel="stylesheet" th:href="@{/css/index.css}" />
 
 </head>
-<body class="dark-theme">
-<div class="navbar">
-    <div class="navbar-logo">Besposke Pottery</div>
-    <ul>
-        <li><a th:href="@{/register}">Sign Up</a></li>
-        <li><a th:href="@{/login}">Login</a></li>
-        <li><a th:href="@{/productspage}">Products</a></li>
-        <li><a th:href="@{/}">Home</a></li>
-        <li><a th:href="@{/products}">Admin</a></li>
-    </ul>
-</div>
+<body>
+<h1 th:text="${product.product_id != null ? 'Edit Product' : 'Create Product'}"></h1>
 
+<form th:action="@{/products/save}" th:object="${product}" method="post">
+    <input type="hidden" th:field="*{product_id}" />
 
-<div class="container" style="margin-top: 5rem;">
-    <h1>Admin page</h1>
-    <div class="product-grid">
-        <div th:each="product : ${products}" class="product-card">
-            <div class="product-details">
-                <h2 th:text="${product.name + ' ' + product.productType + ' ' + product.length
-                + ' ' + product.width + ' ' + product.height + ' ' + product.price + ' '  + product.description + ' ' + product.style}">Vehicle</h2>
-            </div>
-            <div class="product-actions">
-                <a th:href="@{/products/edit/{id}(id=${product.product_id})}" class="edit-button">Edit</a>
-                <a th:href="@{/products/delete/{id}(id=${product.product_id})}" class="delete-button">Delete</a>
-            </div>
-        </div>
-    </div>
-    <a href="/products/new" class="add-button">Add New Product</a>
+    <label for="name">Name</label>
+    <input type="text" id="name" th:field="*{name}" required />
 
-</div>
+    <label for="productType">ProductType</label>
+    <select id="productType" th:field="*{productType}" required>
+        <option th:value="Mug">Mug</option>
+        <option th:value="Bowl">Bowl</option>
+        <option th:value="Vase">Vase</option>
+        <option th:value="Plate">Plate</option>
+        <option th:value="Teapot">Teapot</option>
+        <option th:value="Set">Set</option>
+    </select>
 
+    <label for="length">Length</label>
+    <input type="text" id="length" th:field="*{length}"/>
+
+    <label for="width">Width</label>
+    <input type="text" id="width" th:field="*{width}" required />
+
+    <label for="height">Height</label>
+    <input type="text" id="height" th:field="*{height}" required />
+
+    <label for="imgUrl">Image URL</label>
+    <input type="text" id="imgUrl" th:field="*{imgUrl}" required />
+
+    <label for="sku">SKU</label>
+    <input type="text" id="sku" th:field="*{sku}" required />
+
+    <label for="description">Description</label>
+    <input type="text" id="description" th:field="*{description}" required />
+
+    <label for="price">Price</label>
+    <input type="text" id="price" th:field="*{price}" required />
+
+    <label for="style">Style</label>
+    <select id="style" th:field="*{style}" required>
+        <option selected th:value="Select">Select</option>
+        <option th:value="Handbuilt">Handbuilt</option>
+        <option th:value="Thrown">Thrown</option>
+        <option th:value="Slab">Slab</option>
+        <option th:value="Nerikomi">Nerikomi</option>
+        <option th:value="Marble">Marble</option>
+        <option th:value="Raku">Raku</option>
+        <option th:value="Raku">Sculpture</option>
+        <option th:value="Combo">Combo</option>
+    </select>
+
+    <button type="submit">Save Product</button>
+</form>
+
+<a th:href="@{/products}">Back to Product List</a>
 </body>
 </html>
