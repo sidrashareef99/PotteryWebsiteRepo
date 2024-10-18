@@ -26,15 +26,20 @@ public class MainController {
             return "index";
         }
 
+        @GetMapping("/admin")
+        public String getAdminHome(){
+                return "admin";
+        }
+
         @GetMapping("/login")
         public String getLogin(){
             return "login";
         }
 
-        @PostMapping("/login")
-        public String Authentication(){
-                return "index";
-        }
+//        @PostMapping("/login")
+//        public String Authentication(){
+//                return "redirect:/index";
+//        }
 
         @GetMapping("/showRegister")
         public String getRegister(Model model) {
@@ -70,8 +75,6 @@ public class MainController {
 
         @PostMapping("/register")
         public String registerUser(@Valid @ModelAttribute("customer") Customer customer, BindingResult result) {
-                System.out.println("In registerUser");
-                System.out.print("email: " + customer.getUsername());
                 if (result.hasErrors()) {
                         return "register";  // Return back to the registration form if there are validation errors
                 }

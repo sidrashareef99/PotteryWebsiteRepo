@@ -85,7 +85,7 @@
 <body>
 <div class="receipt-container">
     <h1>Checkout Receipt</h1>
-    <p>Thank you, <span th:text="${customer.name}">Customer Name</span>, for your purchase!</p>
+    <p>Thank you, <span th:text="${customer.firstName}">Customer Name</span>, for your purchase!</p>
 
     <h2>Your Cart</h2>
     <table>
@@ -99,7 +99,7 @@
         </thead>
         <tbody>
         <tr th:each="item : ${cart.items}">
-            <td th:text="${item.product.name} + ' ' + ${item.product.length} + ' ' + ${item.product.width}">Product</td>
+            <td th:text="${item.product.name} + ' ' + ${item.product.length} + ' x ' + ${item.product.width}">Product</td>
             <td th:text="${item.quantity}">Quantity</td>
             <td th:text="${item.price}">Price</td>
             <td th:text="${item.getTotalPrice()}">Total</td>

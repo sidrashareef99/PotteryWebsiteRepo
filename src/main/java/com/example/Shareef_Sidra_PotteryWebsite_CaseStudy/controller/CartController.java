@@ -44,7 +44,8 @@ public class CartController {
         }
 
         cartService.addItemToCart(customer.getId(), productId, quantity);
-        return "redirect:/cart"; // Redirect to the cart view after adding the item
+
+        return "redirect:/productspage"; // Redirect to the cart view after adding the item
     }
 
     // Remove an item from the cart

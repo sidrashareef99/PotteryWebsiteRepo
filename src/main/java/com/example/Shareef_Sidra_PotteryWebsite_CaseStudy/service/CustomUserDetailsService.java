@@ -2,6 +2,8 @@ package com.example.Shareef_Sidra_PotteryWebsite_CaseStudy.service;
 
 import com.example.Shareef_Sidra_PotteryWebsite_CaseStudy.model.Admin;
 import com.example.Shareef_Sidra_PotteryWebsite_CaseStudy.model.Customer;
+import com.example.Shareef_Sidra_PotteryWebsite_CaseStudy.model.Role;
+import com.example.Shareef_Sidra_PotteryWebsite_CaseStudy.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.User;
@@ -20,32 +22,33 @@ public class CustomUserDetailsService implements UserDetailsService {
 
     private final CustomerRepository customerRepository;
     private final AdminRepository adminRepository;
+    private final UserRepository userRepository;
 
 
     @Autowired
-    public CustomUserDetailsService(AdminRepository adminRepository, CustomerRepository customerRepository, AdminRepository adminRepositor) {
+    public CustomUserDetailsService(AdminRepository adminRepository, CustomerRepository customerRepository, AdminRepository adminRepositor, UserRepository userRepository) {
         this.adminRepository = adminRepository;
         this.customerRepository = customerRepository;
+        this.userRepository = userRepository;
     }
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         // Try to find the user as a Customer
-        Optional<Customer> customer = customerRepository.findByUsername(username);
-        if (customer.isPresent()) {
+        Customer customer = customerRepository.findByUsername(username).orElseThrow();
+        if (customer.getRole().equals(Role.CUSTOMER)) {
             return new org.springframework.security.core.userdetails.User(
-                    customer.get().getUsername(),
-                    customer.get().getPassword(),
+                    customer.getUsername(),
+                    customer.getPassword(),
                     Collections.singleton(new SimpleGrantedAuthority("ROLE_CUSTOMER"))  // Correct role
             );
         }
 
         // Try to find the user as an Admin
-        Optional<Admin> admin = adminRepository.findByUsername(username);
-        if (admin.isPresent()) {
+        if (customer.getRole().equals(Role.ADMIN)) {
             return new org.springframework.security.core.userdetails.User(
-                    admin.get().getUsername(),
-                    admin.get().getPassword(),
+                    customer.getUsername(),
+                    customer.getPassword(),
                     Collections.singleton(new SimpleGrantedAuthority("ROLE_ADMIN"))  // Correct role
             );
         }

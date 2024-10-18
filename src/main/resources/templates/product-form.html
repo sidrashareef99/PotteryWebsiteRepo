@@ -11,6 +11,25 @@
 
 </head>
 <body>
+
+<nav>
+    <div id = "nav">
+        <h1 id = "heading">Bespoke <br> Pottery</h1>
+        <div id = "navLinks">
+            <ul>
+                <li><a  th:href="@{/}">Home</a></li>
+                <li><a  th:href="@{/custom}">Customize</a></li>
+                <li><a  th:href="@{/productspage}">Ready-To-Use</a></li>
+                <li><a  th:href="@{/styles}">Styles</a></li>
+                <li><a  th:href="@{/contact}">Contact</a></li>
+                <li><a  th:href="@{/about}">About</a></li>
+                <li><a  th:href="@{/products}">Admin</a></li>
+                <li><a  th:href="@{/cart}">Cart</a></li>
+
+            </ul>
+        </div>
+    </div>
+</nav>
 <h1 th:text="${product.product_id != null ? 'Edit Product' : 'Create Product'}"></h1>
 
 <form th:action="@{/products/save}" th:object="${product}" method="post">

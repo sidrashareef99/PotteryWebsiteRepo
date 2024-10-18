@@ -30,7 +30,6 @@ public class CustomerService {
     private PasswordEncoder passwordEncoder;
 
     public Customer registerCustomer(Customer customer) {
-        // Шифруем пароль перед сохранением
         String encodedPassword = passwordEncoder.encode(customer.getPassword());
         customer.setPassword(encodedPassword);
 

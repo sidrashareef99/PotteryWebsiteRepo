@@ -51,6 +51,18 @@ public class ProductController {
         return "redirect:/products";
     }
 
+    @PostMapping("/customSave")
+    public String customSaveProduct(Model model) {
+        Product product = new Product();
+        model.addAttribute("product", product);
+        if (product.getProduct_id() != null) {
+            productService.update(product.getProduct_id(), product);
+        } else {
+            productService.save(product);
+        }
+        return "redirect:/cart";
+    }
+
     @GetMapping("/delete/{id}")
     public String deleteProduct(@PathVariable Long id) {
         productService.delete(id);

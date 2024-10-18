@@ -12,6 +12,26 @@
     <link rel="stylesheet" th:href="@{/css/index.css}" />
 </head>
 <body>
+
+<nav>
+    <div id = "nav">
+        <h1 id = "heading">Bespoke <br> Pottery</h1>
+        <div id = "navLinks">
+            <ul>
+                <li><a  th:href="@{/}">Home</a></li>
+                <li><a  th:href="@{/custom}">Customize</a></li>
+                <li><a  th:href="@{/productspage}">Ready-To-Use</a></li>
+                <li><a  th:href="@{/styles}">Styles</a></li>
+                <li><a  th:href="@{/contact}">Contact</a></li>
+                <li><a  th:href="@{/about}">About</a></li>
+                <li><a  th:href="@{/products}">Admin</a></li>
+                <li><a  th:href="@{/cart}">Cart</a></li>
+
+            </ul>
+        </div>
+    </div>
+</nav>
+
 <div class="container">
     <h1>Your Cart</h1>
 
@@ -29,7 +49,7 @@
             </thead>
             <tbody>
             <tr th:each="item : ${cart.items}">
-                <td th:text="${item.product.name} + ' ' + ${item.product.length} + ' ' + ${item.product.width}">Product</td>
+                <td th:text="${item.product.name} + ' ' + ${item.product.length} + ' x ' + ${item.product.width}">Product</td>
                 <td>
                     <form th:action="@{/cart/update}" method="post">
                         <input type="hidden" name="productId" th:value="${item.product.product_id}" />
@@ -53,7 +73,7 @@
         <div class="cart-summary">
             <h2>Cart Summary</h2>
             <p>Total Price: <span th:text="${cart.totalPrice}">Total Price</span></p>
-            <p>Estimated Tax: <span th:text="${cart.totalPrice * 0.08}">Estimated Tax</span></p>
+            <p>Estimated Tax: <span th:text="${cart.totalPrice * 0.10}">Estimated Tax</span></p>
         </div>
 
         <!-- Checkout Button -->
