@@ -37,7 +37,7 @@
         <div th:each="product : ${products}" class="product-card">
             <div class="product-details">
                 <h2 th:text="${product.name}">Form</h2>
-                <p><strong>Size:</strong> <span th:text="${product.length + ' ' + product.width}">Size</span></p>
+                <p><strong>Size:</strong> <span th:text="${product.length + ' x ' + product.width + ' x ' + product.height }">Size</span></p>
                 <p><strong>Price:</strong> <span th:text="'$' + ${product.price}">Price</span></p>
                 <img th:src="${product.imgUrl}" th:alt="productImage" >
             </div>

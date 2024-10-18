@@ -1,5 +1,5 @@
 :root{
-    --main-color: #D3CBB5; 
+    --main-color: #D3CBB5;
     --text-color: #664225;
 }
 
@@ -7,7 +7,7 @@
     font-family: "Julius Sans One", sans-serif;
     font-weight: 400;
     font-style: normal;
-  }
+}
 
 #heading{
     font-family: "Julius Sans One", sans-serif;
@@ -99,26 +99,42 @@ li{
 
 
 /* Customize Styles */
-#customForm h2{
+#customForm h2 {
     font-family: "Julius Sans One", sans-serif;
-    color: #D3CBB5;
+    color: var(--main-color);
     padding-left: 5%;
     padding-top: 5%;
+}
+
+#sizeInput{
+    font-family: "Julius Sans One", sans-serif;
+    color: var(--main-color);
+    padding-left: 5%;
+    padding-top: 5%;
+}
+.inputLabel{
+    font-family: "Julius Sans One", sans-serif;
+    color: var(--main-color);
+    padding-left: 5%;
+    padding-top: 5%;
+}
+input, textarea{
+    background-color: var(--main-color);
 
 }
 #customPieces{
     width: 600px;
-    height: 400px; 
+    height: 400px;
     justify-content: right;
 }
 #formContainer{
     margin-left:50px;
     margin-right: 50px;
     width: auto;
-    height: 1000px;
+    height: 1500px;
     background: var(--text-color);
     opacity: 90%;
-    border-radius: 10px;   
+    border-radius: 10px;
 }
 #imageOptions{
     margin-left:5%;
@@ -138,7 +154,7 @@ li{
     background-color: var(--text-color);
     outline: 1px, solid, var(--main-color);
 }
-  
+
 .image-option {
     display: inline-block;
     margin: 10px;

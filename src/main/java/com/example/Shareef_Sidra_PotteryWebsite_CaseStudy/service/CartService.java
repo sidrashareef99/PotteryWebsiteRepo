@@ -25,10 +25,10 @@ public class CartService {
     private CustomerRepository customerRepository;
 
 
-    // public Cart getCartByCustomerId(Long customerId) {
-    //     return cartRepository.findByCustomerId(customerId)
-    //             .orElseGet(() -> createCartForCustomer(customerId));  // Create the cart if it doesn't exist
-    // }
+//     public Cart getCartByCustomerId(Long customerId) {
+//         return cartRepository.findByCustomerId(customerId)
+//                 .orElseGet(() -> createCartForCustomer(customerId));  // Create the cart if it doesn't exist
+//     }
 
     public Cart getCartByCustomerId(Long customerId) {
         Customer customer = customerRepository.findById(customerId)

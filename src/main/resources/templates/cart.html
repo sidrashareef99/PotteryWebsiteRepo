@@ -32,7 +32,7 @@
                 <td th:text="${item.product.name} + ' ' + ${item.product.length} + ' ' + ${item.product.width}">Product</td>
                 <td>
                     <form th:action="@{/cart/update}" method="post">
-                        <input type="hidden" name="productId" th:value="${item.product.id}" />
+                        <input type="hidden" name="productId" th:value="${item.product.product_id}" />
                         <input type="number" name="quantity" th:value="${item.quantity}" min="1" />
                         <button type="submit">Update</button>
                     </form>
@@ -40,7 +40,7 @@
                 <td th:text="${item.price}">Price</td>
                 <td th:text="${item.getTotalPrice()}">Total</td>
                 <td>
-                    <form th:action="@{/cart/remove/{productId}(productId=${item.product.id})}" method="post">
+                    <form th:action="@{/cart/remove/{productId}(productId=${item.product.product_id})}" method="post">
                         <button type="submit">Remove</button>
                     </form>
 
@@ -52,8 +52,8 @@
         <!-- Cart Summary Section -->
         <div class="cart-summary">
             <h2>Cart Summary</h2>
-            <p>Total Price: <span th:text="${cart.total}">Total Price</span></p>
-            <p>Estimated Tax: <span th:text="${cart.total * 0.10}">Estimated Tax</span></p>
+            <p>Total Price: <span th:text="${cart.totalPrice}">Total Price</span></p>
+            <p>Estimated Tax: <span th:text="${cart.totalPrice * 0.08}">Estimated Tax</span></p>
         </div>
 
         <!-- Checkout Button -->
@@ -70,6 +70,7 @@
     </div>
 
     <a href="/productspage" class="continue-shopping-button">Continue Shopping</a>
+
 </div>
 </body>
 </html>

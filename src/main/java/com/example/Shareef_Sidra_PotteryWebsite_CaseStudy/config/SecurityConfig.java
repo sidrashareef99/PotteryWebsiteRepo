@@ -35,9 +35,9 @@
 //                                String role = grantedAuthority.getAuthority();
 //
 //                                try {
-//                                    if (role.equals("ROLE_ADMIN")) {
+//                                    if (role.equals("ADMIN")) {
 //                                        response.sendRedirect("/products");
-//                                    } else if (role.equals("ROLE_CUSTOMER")) {
+//                                    } else if (role.equals("CUSTOMER")) {
 //                                        response.sendRedirect("/products");
 //                                    }
 //                                } catch (Exception e) {

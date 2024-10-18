@@ -45,45 +45,70 @@
                             <img src="../images/vase.png" alt="vase">
                         </div>
                         <div class="image-option" data-value="bowl">
-                            <img src="../images/bowl (1).png" alt="bowl">
+                            <img src="../images/bowl1.png" alt="bowl">
                         </div>
                         <div class="image-option" data-value="plate">
-                            <img src="../images/plate (1).png" alt="plate">
+                            <img src="../images/plate1.png" alt="plate">
                         </div>
                         <div class="image-option" data-value="teapot">
                             <img src="../images/teapot.png" alt="teapot">
                         </div>
                     </div>
                     <input type="hidden" id="selectedImage" name="selectedImage">
+                    <h2>Enter Size:</h2>
+                    <div id="sizeInput">
+                        <label for="length" class="inputLabel" >Length</label><br>
+                        <input type = "text" id="length"><br>
+                        <label for="width" class="inputLabel">Width</label><br>
+                        <input type = "text" id="width" required><br>
+                        <label for="height" class="inputLabel">Height</label><br>
+                        <input type = "text" id="height" required><br>
+                    </div>
+                    <h2>Select a Color:</h2>
+                    <div id = colorSelection>
+                        <div class="image-option" data-value="mug">
+                            <img src="../images/mug.png" alt="mug">
+                        </div>
+                        <div class="image-option" data-value="vase">
+                            <img src="../images/vase.png" alt="vase">
+                        </div>
+                        <div class="image-option" data-value="bowl">
+                            <img src="../images/bowl1.png" alt="bowl">
+                        </div>
+                        <div class="image-option" data-value="plate">
+                            <img src="../images/plate1.png" alt="plate">
+                        </div>
+                        <div class="image-option" data-value="teapot">
+                            <img src="../images/teapot.png" alt="teapot">
+                        </div>
+                    </div>
+                    <div id = colorOptions>
+                        <label for="color" class="inputLabel">Color</label>
+                        <input type="color" id="color" required>
+                    </div>
+                    <h2>Enter Any Other Helpful Details: </h2>
+                    <div id = description>
+                        <label for="details" class="inputLabel">Description</label>
+                        <input type="text" id="details" required>
+                    </div>
+<!--                     -->
+
+
+
+
                     <button id = "customSubmit" type="submit">Submit</button>
+
+
+<!--                <label for="length">Length</label>-->
+<!--                <input type="text" id="length" th:field="*{length}"/>-->
             </form>
 
+
         </div>
-        <script>
-            document.addEventListener('DOMContentLoaded', function() {
-                const form = document.getElementById('imageSelectionForm');
-                const imageOptions = document.querySelectorAll('.image-option');
-                const selectedImageInput = document.getElementById('selectedImage');
-    
-                imageOptions.forEach(option => {
-                    option.addEventListener('click', function() {
-                        imageOptions.forEach(opt => opt.classList.remove('selected'));
-                        this.classList.add('selected');
-                        selectedImageInput.value = this.dataset.value;
-                    });
-                });
-    
-                form.addEventListener('submit', function(e) {
-                    e.preventDefault();
-                    if (selectedImageInput.value) {
-                        alert('Selected image: ' + selectedImageInput.value);
-                        // Here you can send the form data to a server
-                    } else {
-                        alert('Please select an image');
-                    }
-                });
-            });
-        </script>
+
+
+
+        <script type="module" src="../js/custom.js"></script>
 
 
 

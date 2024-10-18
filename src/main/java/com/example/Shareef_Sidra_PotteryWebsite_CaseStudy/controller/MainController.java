@@ -31,6 +31,11 @@ public class MainController {
             return "login";
         }
 
+        @PostMapping("/login")
+        public String Authentication(){
+                return "index";
+        }
+
         @GetMapping("/showRegister")
         public String getRegister(Model model) {
                 model.addAttribute("customer", new Customer());  // Initialize empty customer object for the form
@@ -57,24 +62,24 @@ public class MainController {
         public String getContact(){
                 return "contact";
         }
-        @GetMapping("/cart")
-        public String getCart(){
-                return "cart";
-        }
-
-
-//        @PostMapping("/register")
-//        public String registerUser(@Valid @ModelAttribute("customer") Customer customer, BindingResult result) {
-//                System.out.println("In registerUser");
-//                System.out.print("email: " + customer.getUsername());
-//                if (result.hasErrors()) {
-//                        return "register";  // Return back to the registration form if there are validation errors
-//                }
-//
-//                customer.setPassword(passwordEncoder.encode(customer.getPassword()));
-//                customerService.registerCustomer(customer);  // Use the method that creates the customer and their cart
-//                return "redirect:/login";
+//        @GetMapping("/cart")
+//        public String getCart(){
+//                return "cart";
 //        }
+
+
+        @PostMapping("/register")
+        public String registerUser(@Valid @ModelAttribute("customer") Customer customer, BindingResult result) {
+                System.out.println("In registerUser");
+                System.out.print("email: " + customer.getUsername());
+                if (result.hasErrors()) {
+                        return "register";  // Return back to the registration form if there are validation errors
+                }
+
+                //customer.setPassword(passwordEncoder.encode(customer.getPassword()));
+                customerService.registerCustomer(customer);  // Use the method that creates the customer and their cart
+                return "redirect:/login";
+        }
 
 
         @GetMapping("/productspage")
