@@ -7,13 +7,16 @@ import com.example.Shareef_Sidra_PotteryWebsite_CaseStudy.repository.CustomerRep
 import com.example.Shareef_Sidra_PotteryWebsite_CaseStudy.repository.ProductRepository;
 import com.example.Shareef_Sidra_PotteryWebsite_CaseStudy.model.Customer;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
+
 @Service
 public class CustomerService {
+
     @Autowired
     private CustomerRepository customerRepository;
 
@@ -23,7 +26,14 @@ public class CustomerService {
     @Autowired
     private CartRepository cartRepository;
 
+    @Autowired
+    private PasswordEncoder passwordEncoder;
+
     public Customer registerCustomer(Customer customer) {
+        // Шифруем пароль перед сохранением
+        String encodedPassword = passwordEncoder.encode(customer.getPassword());
+        customer.setPassword(encodedPassword);
+
         Customer savedCustomer = customerRepository.save(customer);
 
         // Create and save a new Cart for the registered Customer
@@ -37,7 +47,6 @@ public class CustomerService {
     public List<Product> getProductsByStyle(String style) {
         return productRepository.findByStyle(style);
     }
-
 
     public Optional<Customer> findByUsername(String username) {
         return customerRepository.findByUsername(username);
