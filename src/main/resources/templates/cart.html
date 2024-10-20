@@ -78,7 +78,7 @@
 
         <!-- Checkout Button -->
         <div class="checkout-section">
-            <form th:action="@{/cart/checkout}" method="post">
+            <form th:action="@{/cart/checkout}" method="post" th:object="${cart}">
                 <button type="submit">Checkout</button>
             </form>
         </div>

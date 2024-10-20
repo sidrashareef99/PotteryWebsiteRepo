@@ -11,6 +11,7 @@ import com.example.Shareef_Sidra_PotteryWebsite_CaseStudy.repository.ProductRepo
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.Optional;
 
 @Service
@@ -41,7 +42,7 @@ public class CartService {
         });
     }
 
-    private Cart createCartForCustomer(Long customerId) {
+    public Cart createCartForCustomer(Long customerId) {
         Customer customer = customerRepository.findById(customerId)
                 .orElseThrow(() -> new RuntimeException("Customer not found"));
 
@@ -50,6 +51,24 @@ public class CartService {
         newCart.setTotalPrice(0.0);
         return cartRepository.save(newCart);
     }
+
+//    public Cart createNewCartForCustomer(Long customerId) {
+//        Customer customer = customerRepository.findById(customerId)
+//                .orElseThrow(() -> new RuntimeException("Customer not found"));
+//
+//        Cart cart = getCartByCustomerId(customerId);
+//        if (cart != null){
+//            Cart newCart = new Cart();
+//            newCart.setCustomer(customer);
+//            newCart.setTotalPrice(0.0);
+//        }
+//
+////        Cart newCart = new Cart();
+////        newCart.setCustomer(customer);
+////        newCart.setTotalPrice(0.0);
+//        return cartRepository.save(cart);
+//
+//    }
 
     public Cart addItemToCart(Long customerId, Long productId, int quantity) {
         Cart cart = getCartByCustomerId(customerId);

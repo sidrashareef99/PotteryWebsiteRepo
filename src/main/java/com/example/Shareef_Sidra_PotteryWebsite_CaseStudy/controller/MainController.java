@@ -26,9 +26,9 @@ public class MainController {
             return "index";
         }
 
-        @GetMapping("/admin")
+        @GetMapping("/adminIndex")
         public String getAdminHome(){
-                return "admin";
+                return "adminIndex";
         }
 
         @GetMapping("/login")
@@ -48,7 +48,8 @@ public class MainController {
         }
 
         @GetMapping("/custom")
-        public String getCustom(){
+        public String getCustom(Model model){
+
                 return "custom";
         }
         @GetMapping("/about")

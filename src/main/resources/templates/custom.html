@@ -30,12 +30,13 @@
                     <li><a  th:href="@{/styles}">Styles</a></li>
                     <li><a  th:href="@{/contact}">Contact</a></li>
                     <li><a  th:href="@{/about}">About</a></li>
+                    <li><a  th:href="@{/cart}">Cart</a></li>
                 </ul>
                 </div>
             </div>
         </nav>
         <div id = "formContainer">
-            <form  id = "customForm" th:action="@{/products/customSave}" method="post">
+            <form  id = "customForm" th:action="@{/products/customSave}"  method="post">
                     <h2>Select a Form:</h2>
                     <div id="imageOptions">
                         <div class="image-option" data-value="mug">

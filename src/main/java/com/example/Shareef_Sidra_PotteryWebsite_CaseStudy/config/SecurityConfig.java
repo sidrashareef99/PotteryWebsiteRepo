@@ -25,7 +25,7 @@ public class SecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
                 .authorizeHttpRequests(authorizeRequests -> authorizeRequests
-                        .requestMatchers("/css/**", "/js/**", "/images/**", "/login", "/showRegister", "/register").permitAll()
+                        .requestMatchers("/css/**", "/js/**", "/images/**", "/login", "/showRegister", "/register","/newCart").permitAll()
                         .requestMatchers("/products/**").hasRole("ADMIN")
                         .requestMatchers("/cart/**", "/products/**").hasAnyRole("CUSTOMER", "ADMIN")
                         .anyRequest().authenticated()
@@ -36,13 +36,13 @@ public class SecurityConfig {
                         .successHandler((request, response, authentication) -> {
                             authentication.getAuthorities().forEach(grantedAuthority -> {
                                 UserDetails u = customUserDetailsService.loadUserByUsername("sidrashareef99@gmail.com");
-//                                String role = grantedAuthority.getAuthority();
-                                String role  = u.getAuthorities().iterator().next().toString();
+                                String role = grantedAuthority.getAuthority();
+                               // String role  = u.getAuthorities().iterator().next().toString();
 
                                 try {
                                     if (role.equals("ROLE_ADMIN")) {
                                         log.info("admin");
-                                        response.sendRedirect("/");
+                                        response.sendRedirect("/adminIndex");
                                     } else if (role.equals("ROLE_CUSTOMER")) {
                                         log.info("customer");
                                         response.sendRedirect("/");

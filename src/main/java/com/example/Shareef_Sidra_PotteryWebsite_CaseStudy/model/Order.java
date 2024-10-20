@@ -18,7 +18,11 @@ public class Order {
     @JoinColumn(name = "customer_id")
     private Customer customer;
 
-    @OneToMany(mappedBy = "order", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    private List<OrderDetails> details = new ArrayList<>();
+    @ManyToOne
+    @JoinColumn(name = "cart_id")
+    private Cart cart;
+
+//    @OneToMany(mappedBy = "order", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+//    private List<OrderDetails> details = new ArrayList<>();
 
 }
